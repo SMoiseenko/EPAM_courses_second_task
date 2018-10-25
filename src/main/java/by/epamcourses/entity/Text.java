@@ -8,9 +8,18 @@ public class Text {
 
     private String text;
     
-    public void setText(String fileName) throws FileNotFoundException {
+    public Text(String fileName) {
+	
+	try {
 	this.text = new FileReader().readFromFile(fileName);
-	 }
+	} catch (FileNotFoundException e) {
+	    System.out.println("File not found!!!");
+	}
+    }
+
+    
+    
+    
     
     public String getText() {
 	return text;
