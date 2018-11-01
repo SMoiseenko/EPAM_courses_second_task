@@ -3,8 +3,17 @@ package by.epamcourses.entity;
 import java.util.ArrayList;
 
 public class Sentence {
-    private ArrayList<Word> listOfWords = new ArrayList<>();
-    private ArrayList<Symbol> listOfSymbols = new ArrayList<>();
-    private ArrayList<PunctuationMark> listOfPunctuationMarks = new ArrayList<>();
+    private ArrayList<ReturnAsString> listPartsOfSentence = new ArrayList<>();
 
+    public ArrayList<ReturnAsString> getListPartsOfSentence() {
+	return listPartsOfSentence;
+    }
+
+    public void addPunctcharToListOfSentence(String setMe) {
+	listPartsOfSentence.add(new PunctuationMark(setMe));
+    }
+
+    public void addWordToListOfSentence(String setMe) {
+	listPartsOfSentence.add(new Word(setMe));
+    }
 }
