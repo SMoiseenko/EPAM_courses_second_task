@@ -2,18 +2,31 @@ package by.epamcourses.entity;
 
 import java.util.ArrayList;
 
-public class Sentence {
-    private ArrayList<ReturnAsString> listPartsOfSentence = new ArrayList<>();
+public class Sentence implements WorkAsString {
+    private ArrayList<WorkAsString> listPartsOfSentence = new ArrayList<>();
 
-    public ArrayList<ReturnAsString> getListPartsOfSentence() {
+    // *************************************************************************
+    @Override
+    public ArrayList<WorkAsString> getListOfElements() {
 	return listPartsOfSentence;
     }
 
-    public void addPunctcharToListOfSentence(String setMe) {
-	listPartsOfSentence.add(new PunctuationMark(setMe));
+    @Override
+    public void addElementToList(WorkAsString element) {
+	
+	listPartsOfSentence.add(element);
+	
+	
     }
 
-    public void addWordToListOfSentence(String setMe) {
-	listPartsOfSentence.add(new Word(setMe));
+    // *************************************************************************
+
+    @Override
+    public String returnAsString() {
+	StringBuilder sentence = new StringBuilder();
+	for (WorkAsString c : listPartsOfSentence) {
+	    sentence.append(c.returnAsString());
+	}
+	return String.valueOf(sentence);
     }
 }

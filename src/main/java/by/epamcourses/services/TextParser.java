@@ -4,48 +4,66 @@ import java.util.ArrayList;
 
 import by.epamcourses.entity.Paragraph;
 import by.epamcourses.entity.PunctuationMark;
-import by.epamcourses.entity.ReturnAsString;
 import by.epamcourses.entity.Sentence;
 import by.epamcourses.entity.Word;
+import by.epamcourses.entity.WorkAsString;
 
 public class TextParser {
-    private ArrayList<ReturnAsString> listOfParagraphs = new ArrayList<>();
-    private ArrayList<ReturnAsString> listOfSentences = new ArrayList<>();
+    private ArrayList<WorkAsString> listOfParagraphs = new ArrayList<>();
+    private ArrayList<Sentence> listOfSentences = new ArrayList<>();
+    
 
-    public ArrayList<ReturnAsString> parseText(String parseMe) {
+    String punctWordArray = ",:-)";
+    String punctSentencesArray = ".?!";
 
-	char[] bufText = parseMe.toCharArray();
-	StringBuilder bufWord = new StringBuilder();
-	// StringBuilder bufSentence = new StringBuilder();
-	// StringBuilder bufParagraph = new StringBuilder();
+    public ArrayList<Sentence> parseText(String parseMe) {
+
+	char[] bufText = parseMe.toCharArray(); // parse String to char[]
+
+	StringBuilder bufWord = new StringBuilder(); // buff to create word from char
+	ArrayList<WorkAsString> bufferPartsOfSentence = new ArrayList<>();
+	
 	for (char symb : bufText) {
 
-	    if (symb == ',' || symb == '!' || symb == '?') {
-		listOfSentences.add(new Word(bufWord.toString()));
-		listOfSentences.add(new PunctuationMark(String.valueOf(symb)));
+	    if (punctSentencesArray.contains(String.valueOf(symb))) {
+		bufferPartsOfSentence.add(new Word(bufWord.toString()));
+		bufferPartsOfSentence.add(new PunctuationMark(String.valueOf(symb)));
 		bufWord.setLength(0);
-	    }
+		listOfSentences.add(new Sentence());
+		bufferPartsOfSentence.clear();;
 
-	    /*
-	     * switch (symb) { case '\t': break; case '\n': break; case ' ': if
-	     * (bufWord.length() != 0) { listOfSentences.add(new Word(bufWord.toString()));
-	     * bufWord.setLength(0); } break; case ',': findPunctchar( bufWord, symb);
-	     * break; case '.': findPunctchar(bufWord, symb); break; case '!':
-	     * findPunctchar(bufWord, symb); break; case '?': findPunctchar(bufWord, symb);
-	     * break;
-	     * 
-	     * default: bufWord.append(symb); break;
-	     */
+	    } else {
+//****************************
+		if (Character.isLetterOrDigit(symb) || symb == '\'') {// слово это буквы цифры и апостроф
+		    bufWord.append(symb);
+		}
+
+		if (symb == '\t') {// табы опускаем
+		    continue;
+		}
+
+		if (symb == ' ' && bufWord.length() != 0) { // пробелы = новое слово
+		    bufferPartsOfSentence.add(new Word(bufWord.toString()));
+		    bufWord.setLength(0);
+
+		}
+
+		if (symb == '(') {
+		    bufferPartsOfSentence.add(new PunctuationMark(String.valueOf(symb)));
+
+		}
+
+		if (punctWordArray.contains(String.valueOf(symb))) {// есть ли пункт в стринге пунктров
+		    bufferPartsOfSentence.add(new Word(bufWord.toString()));
+		    bufferPartsOfSentence.add(new PunctuationMark(String.valueOf(symb)));
+		    bufWord.setLength(0);
+		}
+	    }
+//************************
 	}
 
- return listOfSentences;
+	return listOfSentences;
 
-    }
-
-    private void findPunctchar(StringBuilder bufWord, char symb) {
-	listOfSentences.add(new Word(bufWord.toString()));
-	listOfSentences.add(new PunctuationMark(String.valueOf(symb)));
-	bufWord.setLength(0);
     }
 
 }

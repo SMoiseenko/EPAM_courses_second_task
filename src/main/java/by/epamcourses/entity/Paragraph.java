@@ -1,22 +1,30 @@
 package by.epamcourses.entity;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
-public class Paragraph {
+public class Paragraph implements WorkAsString{
 
-    //private ArrayList<Sentence> listOfSentences = new ArrayList<>();
-    private String paragraph;
-    
-    public Paragraph(String paragraph) {
-	this.paragraph = paragraph;
+    private ArrayList<WorkAsString> listOfSentences = new ArrayList<>();
+        
+    @Override
+    public void addElementToList (WorkAsString sentence) {
+	listOfSentences.add(sentence);
     }
     
-    public void setParagraph (String paragraph) {
-	this.paragraph = paragraph;
+   
+
+    @Override
+    public String returnAsString() {
+	StringBuilder paragraph = new StringBuilder();
+	for(WorkAsString elements: listOfSentences) {
+	    paragraph.append(elements.returnAsString());
+	}
+	return String.valueOf(paragraph);
     }
-    
-    public String getParagraph() {
-	return paragraph;
+
+    @Override
+    public ArrayList<WorkAsString> getListOfElements() {
+	return listOfSentences;
     }
     
     
