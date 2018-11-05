@@ -12,7 +12,7 @@ public class FileReader {
 
     public String readFromFile(String fileName) throws FileNotFoundException {
 	StringBuilder str = new StringBuilder("");
-	Scanner in = new Scanner(new File(fileName));
+	Scanner in = new Scanner(new File(fileName), "UTF-8");
 	while (in.hasNext()) {
 	    str.append(in.nextLine());
 	}
