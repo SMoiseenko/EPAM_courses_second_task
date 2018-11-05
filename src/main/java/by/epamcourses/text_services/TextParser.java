@@ -1,15 +1,15 @@
-package by.epamcourses.services;
+package by.epamcourses.text_services;
 
 import java.util.ArrayList;
 
-import by.epamcourses.entity.Paragraph;
-import by.epamcourses.entity.PunctuationMark;
-import by.epamcourses.entity.Sentence;
-import by.epamcourses.entity.Word;
-import by.epamcourses.entity.WorkAsString;
+import by.epamcourses.text_entity.Paragraph;
+import by.epamcourses.text_entity.PunctuationMark;
+import by.epamcourses.text_entity.Sentence;
+import by.epamcourses.text_entity.Word;
+import by.epamcourses.text_entity.CompositeTextParts;
 
 public class TextParser {
-    private ArrayList<WorkAsString> listOfParagraphs = new ArrayList<>();
+    private ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();
     private ArrayList<Sentence> listOfSentences = new ArrayList<>();
     
 
@@ -21,7 +21,7 @@ public class TextParser {
 	char[] bufText = parseMe.toCharArray(); // parse String to char[]
 
 	StringBuilder bufWord = new StringBuilder(); // buff to create word from char
-	ArrayList<WorkAsString> bufferPartsOfSentence = new ArrayList<>();
+	ArrayList<CompositeTextParts> bufferPartsOfSentence = new ArrayList<>();
 	
 	for (char symb : bufText) {
 

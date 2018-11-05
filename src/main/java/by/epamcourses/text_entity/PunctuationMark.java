@@ -1,8 +1,8 @@
-package by.epamcourses.entity;
+package by.epamcourses.text_entity;
 
 import java.util.ArrayList;
 
-public class PunctuationMark implements WorkAsString {
+public class PunctuationMark implements CompositeTextParts {
     private String punctchar;
 
     public PunctuationMark(String punctchar) {
@@ -16,13 +16,13 @@ public class PunctuationMark implements WorkAsString {
 
    
     @Override
-    public ArrayList<WorkAsString> getListOfElements() {
+    public ArrayList<CompositeTextParts> getListOfElements() {
 	// TODO Auto-generated method stub
 	return null;
     }
 
     @Override
-    public void addElementToList(WorkAsString element) {
+    public void addElementToList(CompositeTextParts element) {
 	// TODO Auto-generated method stub
 	
     }

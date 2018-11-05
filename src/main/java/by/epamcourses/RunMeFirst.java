@@ -2,22 +2,22 @@ package by.epamcourses;
 
 import java.util.ArrayList;
 
-import by.epamcourses.entity.Paragraph;
-import by.epamcourses.entity.PunctuationMark;
-import by.epamcourses.entity.Sentence;
-import by.epamcourses.entity.Text;
-import by.epamcourses.entity.Word;
-import by.epamcourses.entity.WorkAsString;
-import by.epamcourses.services.TextParser;
+import by.epamcourses.text_entity.Paragraph;
+import by.epamcourses.text_entity.PunctuationMark;
+import by.epamcourses.text_entity.Sentence;
+import by.epamcourses.text_entity.Text;
+import by.epamcourses.text_entity.Word;
+import by.epamcourses.text_entity.CompositeTextParts;
+import by.epamcourses.text_services.TextParser;
 
 public class RunMeFirst {
 
     public static void main(String[] args) {
 
-	WorkAsString firstParagraph = new Paragraph();
+	CompositeTextParts firstParagraph = new Paragraph();
 	
 
-	WorkAsString firstSentence = new Sentence();
+	CompositeTextParts firstSentence = new Sentence();
 	firstSentence.addElementToList(new Word("This"));
 	firstSentence.addElementToList(new PunctuationMark("-"));
 	firstSentence.addElementToList(new Word("is"));
@@ -29,7 +29,7 @@ public class RunMeFirst {
 
 	firstParagraph.addElementToList(firstSentence);
 	
-	WorkAsString secondSentence = new Sentence();
+	CompositeTextParts secondSentence = new Sentence();
 	secondSentence.addElementToList(new Word("Second"));
 	secondSentence.addElementToList(new PunctuationMark("-"));
 	secondSentence.addElementToList(new Word("sentence"));
@@ -47,12 +47,12 @@ public class RunMeFirst {
 	System.out.println(firstParagraph + "   " + firstParagraph.returnAsString());
 
 	System.out.println("*****************");
-	for (WorkAsString c : firstParagraph.getListOfElements()) {
+	for (CompositeTextParts c : firstParagraph.getListOfElements()) {
 	    System.out.println(c + "   " + c.returnAsString());
 	}
 	System.out.println("*****************");
-	for (WorkAsString listOfSentences : firstParagraph.getListOfElements()) {
-	    for (WorkAsString c : listOfSentences.getListOfElements()) {
+	for (CompositeTextParts listOfSentences : firstParagraph.getListOfElements()) {
+	    for (CompositeTextParts c : listOfSentences.getListOfElements()) {
 		System.out.println(c + "   " + c.returnAsString());
 	    }
 	}

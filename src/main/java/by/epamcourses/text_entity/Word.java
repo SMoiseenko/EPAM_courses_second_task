@@ -1,8 +1,8 @@
-package by.epamcourses.entity;
+package by.epamcourses.text_entity;
 
 import java.util.ArrayList;
 
-public class Word implements WorkAsString {
+public class Word implements CompositeTextParts {
     private String word;
 
     public Word(String word) {
@@ -15,13 +15,13 @@ public class Word implements WorkAsString {
     }
 
     @Override
-    public ArrayList<WorkAsString> getListOfElements() {
+    public ArrayList<CompositeTextParts> getListOfElements() {
 	// TODO Auto-generated method stub
 	return null;
     }
 
     @Override
-    public void addElementToList(WorkAsString element) {
+    public void addElementToList(CompositeTextParts element) {
 	// TODO Auto-generated method stub
 	
     }

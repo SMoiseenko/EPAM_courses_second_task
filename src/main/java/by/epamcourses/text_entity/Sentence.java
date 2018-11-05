@@ -1,18 +1,18 @@
-package by.epamcourses.entity;
+package by.epamcourses.text_entity;
 
 import java.util.ArrayList;
 
-public class Sentence implements WorkAsString {
-    private ArrayList<WorkAsString> listPartsOfSentence = new ArrayList<>();
+public class Sentence implements CompositeTextParts {
+    private ArrayList<CompositeTextParts> listPartsOfSentence = new ArrayList<>();
 
     // *************************************************************************
     @Override
-    public ArrayList<WorkAsString> getListOfElements() {
+    public ArrayList<CompositeTextParts> getListOfElements() {
 	return listPartsOfSentence;
     }
 
     @Override
-    public void addElementToList(WorkAsString element) {
+    public void addElementToList(CompositeTextParts element) {
 	
 	listPartsOfSentence.add(element);
 	
@@ -24,7 +24,7 @@ public class Sentence implements WorkAsString {
     @Override
     public String returnAsString() {
 	StringBuilder sentence = new StringBuilder();
-	for (WorkAsString c : listPartsOfSentence) {
+	for (CompositeTextParts c : listPartsOfSentence) {
 	    sentence.append(c.returnAsString());
 	}
 	return String.valueOf(sentence);

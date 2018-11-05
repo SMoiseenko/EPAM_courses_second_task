@@ -1,9 +1,9 @@
-package by.epamcourses.entity;
+package by.epamcourses.text_entity;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import by.epamcourses.services.FileReader;
+import by.epamcourses.text_services.FileReader;
 
 public class Text {
 
