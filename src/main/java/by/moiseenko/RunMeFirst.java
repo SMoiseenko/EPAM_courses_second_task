@@ -1,14 +1,14 @@
-package by.epamcourses;
+package by.moiseenko;
 
 import java.util.ArrayList;
 
-import by.epamcourses.text_entity.Paragraph;
-import by.epamcourses.text_entity.PunctuationMark;
-import by.epamcourses.text_entity.Sentence;
-import by.epamcourses.text_entity.Text;
-import by.epamcourses.text_entity.Word;
-import by.epamcourses.text_entity.CompositeTextParts;
-import by.epamcourses.text_services.TextParser;
+import by.moiseenko.text_entity.CompositeTextParts;
+import by.moiseenko.text_entity.Paragraph;
+import by.moiseenko.text_entity.PunctuationMark;
+import by.moiseenko.text_entity.Sentence;
+import by.moiseenko.text_entity.Text;
+import by.moiseenko.text_entity.Word;
+import by.moiseenko.text_services.TextParser;
 
 public class RunMeFirst {
 
@@ -46,6 +46,8 @@ public class RunMeFirst {
 	
 	System.out.println(firstParagraph + "   " + firstParagraph.returnAsString());
 
+	System.out.println("*****************");
+	firstParagraph.getListOfElements().stream().forEach((el)->System.out.println(el + "   " + el.returnAsString()));
 	System.out.println("*****************");
 	for (CompositeTextParts c : firstParagraph.getListOfElements()) {
 	    System.out.println(c + "   " + c.returnAsString());

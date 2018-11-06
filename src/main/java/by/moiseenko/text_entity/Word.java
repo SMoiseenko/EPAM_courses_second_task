@@ -1,20 +1,19 @@
-package by.epamcourses.text_entity;
+package by.moiseenko.text_entity;
 
 import java.util.ArrayList;
 
-public class PunctuationMark implements CompositeTextParts {
-    private String punctchar;
+public class Word implements CompositeTextParts {
+    private String word;
 
-    public PunctuationMark(String punctchar) {
-	this.punctchar = punctchar;
+    public Word(String word) {
+	this.word = word;
     }
 
     @Override
     public String returnAsString() {
-	return punctchar;
+	return word;
     }
 
-   
     @Override
     public ArrayList<CompositeTextParts> getListOfElements() {
 	// TODO Auto-generated method stub
@@ -26,5 +25,4 @@ public class PunctuationMark implements CompositeTextParts {
 	// TODO Auto-generated method stub
 	
     }
-
 }

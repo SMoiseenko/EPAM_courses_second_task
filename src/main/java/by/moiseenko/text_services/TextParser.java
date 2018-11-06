@@ -1,12 +1,12 @@
-package by.epamcourses.text_services;
+package by.moiseenko.text_services;
 
 import java.util.ArrayList;
 
-import by.epamcourses.text_entity.Paragraph;
-import by.epamcourses.text_entity.PunctuationMark;
-import by.epamcourses.text_entity.Sentence;
-import by.epamcourses.text_entity.Word;
-import by.epamcourses.text_entity.CompositeTextParts;
+import by.moiseenko.text_entity.CompositeTextParts;
+import by.moiseenko.text_entity.Paragraph;
+import by.moiseenko.text_entity.PunctuationMark;
+import by.moiseenko.text_entity.Sentence;
+import by.moiseenko.text_entity.Word;
 
 public class TextParser {
     private ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();

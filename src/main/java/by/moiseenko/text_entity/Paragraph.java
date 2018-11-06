@@ -1,4 +1,4 @@
-package by.epamcourses.text_entity;
+package by.moiseenko.text_entity;
 
 import java.util.ArrayList;
 

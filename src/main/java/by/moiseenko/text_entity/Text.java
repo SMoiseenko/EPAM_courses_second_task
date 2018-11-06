@@ -1,9 +1,9 @@
-package by.epamcourses.text_entity;
+package by.moiseenko.text_entity;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import by.epamcourses.text_services.FileReader;
+import by.moiseenko.text_services.FileReader;
 
 public class Text {
 

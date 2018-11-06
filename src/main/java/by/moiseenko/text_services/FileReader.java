@@ -1,4 +1,4 @@
-package by.epamcourses.text_services;
+package by.moiseenko.text_services;
 
 import java.io.File;
 import java.io.FileNotFoundException;
