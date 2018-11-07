@@ -26,6 +26,10 @@ public class Paragraph implements CompositeTextParts{
     public ArrayList<CompositeTextParts> getListOfElements() {
 	return listOfSentences;
     }
-    
+    @Override
+    public String toString() {
+	
+	return (String.valueOf(this.getClass())).substring(31)+".class";
+    }
     
 }

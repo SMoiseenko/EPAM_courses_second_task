@@ -25,4 +25,9 @@ public class Word implements CompositeTextParts {
 	// TODO Auto-generated method stub
 	
     }
+    @Override
+    public String toString() {
+	
+	return (String.valueOf(this.getClass())).substring(31)+".class";
+    }
 }

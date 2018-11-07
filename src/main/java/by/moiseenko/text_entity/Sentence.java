@@ -29,4 +29,9 @@ public class Sentence implements CompositeTextParts {
 	}
 	return String.valueOf(sentence);
     }
+    @Override
+    public String toString() {
+	
+	return (String.valueOf(this.getClass())).substring(31)+".class";
+    }
 }
