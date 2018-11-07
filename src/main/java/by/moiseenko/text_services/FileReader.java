@@ -14,7 +14,7 @@ public class FileReader {
 	StringBuilder str = new StringBuilder("");
 	Scanner in = new Scanner(new File(fileName), "UTF-8");
 	while (in.hasNext()) {
-	    str.append(in.nextLine());
+	    str.append(in.nextLine() + "\n");
 	}
 	in.close();
 	return str.toString();
