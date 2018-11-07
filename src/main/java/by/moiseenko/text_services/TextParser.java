@@ -9,61 +9,66 @@ import by.moiseenko.text_entity.Sentence;
 import by.moiseenko.text_entity.Word;
 
 public class TextParser {
-    private ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();
-    private ArrayList<Sentence> listOfSentences = new ArrayList<>();
-    
+   
+    static final String punctWordArray = ",:)";
+    static final String punctSentencesArray = ".?!";
+    static final String wordsElements = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'-";
 
-    String punctWordArray = ",:-)";
-    String punctSentencesArray = ".?!";
+   static public ArrayList<CompositeTextParts> parseText(String parseMe) {
 
-    public ArrayList<Sentence> parseText(String parseMe) {
+	ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();
+
+	StringBuilder bufWord = new StringBuilder(); // buff to create word from char
 
 	char[] bufText = parseMe.toCharArray(); // parse String to char[]
 
-	StringBuilder bufWord = new StringBuilder(); // buff to create word from char
-	ArrayList<CompositeTextParts> bufferPartsOfSentence = new ArrayList<>();
-	
-	for (char symb : bufText) {
+	if (bufText.length != 0) {
+	    CompositeTextParts newSentence = new Sentence();
+	    CompositeTextParts newParagraph = new Paragraph();
 
-	    if (punctSentencesArray.contains(String.valueOf(symb))) {
-		bufferPartsOfSentence.add(new Word(bufWord.toString()));
-		bufferPartsOfSentence.add(new PunctuationMark(String.valueOf(symb)));
-		bufWord.setLength(0);
-		listOfSentences.add(new Sentence());
-		bufferPartsOfSentence.clear();;
-
-	    } else {
-//****************************
-		if (Character.isLetterOrDigit(symb) || symb == '\'') {// слово это буквы цифры и апостроф
-		    bufWord.append(symb);
-		}
+	    for (char symb : bufText) {
 
 		if (symb == '\t') {// табы опускаем
 		    continue;
 		}
 
-		if (symb == ' ' && bufWord.length() != 0) { // пробелы = новое слово
-		    bufferPartsOfSentence.add(new Word(bufWord.toString()));
-		    bufWord.setLength(0);
-
+		if (symb == '\n') {
+		    listOfParagraphs.add(newParagraph);
+		    newParagraph = new Paragraph();
 		}
 
+		if (punctSentencesArray.contains(String.valueOf(symb))) {
+		    if (bufWord.length() != 0) {
+		    newSentence.addElementToList(new Word(bufWord.toString()));
+		    bufWord.setLength(0);
+		    }
+		    newSentence.addElementToList(new PunctuationMark(String.valueOf(symb)));
+		    newParagraph.addElementToList(newSentence);
+		    newSentence = new Sentence();
+		}
+
+		if (punctWordArray.contains(String.valueOf(symb))) {
+		    newSentence.addElementToList(new Word(bufWord.toString()));
+		    newSentence.addElementToList(new PunctuationMark(String.valueOf(symb)));
+		    bufWord.setLength(0);
+		}
+
+		if (symb == ' ' && bufWord.length() != 0) {
+		    newSentence.addElementToList(new Word(bufWord.toString()));
+		    bufWord.setLength(0);
+		}
 		if (symb == '(') {
-		    bufferPartsOfSentence.add(new PunctuationMark(String.valueOf(symb)));
-
+		    newSentence.addElementToList(new PunctuationMark(String.valueOf(symb)));
 		}
 
-		if (punctWordArray.contains(String.valueOf(symb))) {// есть ли пункт в стринге пунктров
-		    bufferPartsOfSentence.add(new Word(bufWord.toString()));
-		    bufferPartsOfSentence.add(new PunctuationMark(String.valueOf(symb)));
-		    bufWord.setLength(0);
+		if (wordsElements.contains(String.valueOf(symb))) {
+		    bufWord.append(symb);
 		}
 	    }
-//************************
+
+	} else {
+	    System.out.println("File is empty, so no needed to be parsed!!!");
 	}
-
-	return listOfSentences;
-
+	return listOfParagraphs;
     }
-
 }
