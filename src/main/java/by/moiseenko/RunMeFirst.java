@@ -1,88 +1,82 @@
 package by.moiseenko;
 
-import java.util.ArrayList;
-
-import by.moiseenko.text_entity.CompositeTextParts;
-import by.moiseenko.text_entity.Paragraph;
-import by.moiseenko.text_entity.PunctuationMark;
-import by.moiseenko.text_entity.Sentence;
 import by.moiseenko.text_entity.Text;
-import by.moiseenko.text_entity.Word;
-import by.moiseenko.text_services.TextParser;
 
 public class RunMeFirst {
 
     public static void main(String[] args) {
 
-	CompositeTextParts firstParagraph = new Paragraph();
+	Text text = new Text("src/main/resources/1984.txt");
 	
-
-	CompositeTextParts firstSentence = new Sentence();
-	firstSentence.addElementToList(new Word("This"));
-	firstSentence.addElementToList(new PunctuationMark("-"));
-	firstSentence.addElementToList(new Word("is"));
-	firstSentence.addElementToList(new PunctuationMark("-"));
-	firstSentence.addElementToList(new Word("first"));
-	firstSentence.addElementToList(new PunctuationMark("-"));
-	firstSentence.addElementToList(new Word("sentence"));
-	firstSentence.addElementToList(new PunctuationMark("."));
-
-	firstParagraph.addElementToList(firstSentence);
-	
-	CompositeTextParts secondSentence = new Sentence();
-	secondSentence.addElementToList(new Word("Second"));
-	secondSentence.addElementToList(new PunctuationMark("-"));
-	secondSentence.addElementToList(new Word("sentence"));
-	secondSentence.addElementToList(new PunctuationMark("-"));
-	secondSentence.addElementToList(new Word("is"));
-	secondSentence.addElementToList(new PunctuationMark("-"));
-	secondSentence.addElementToList(new Word("this"));
-	secondSentence.addElementToList(new PunctuationMark("."));
-
-	firstParagraph.addElementToList(secondSentence);
-	firstParagraph.addElementToList(firstSentence);
-	firstParagraph.addElementToList(secondSentence);
-	
-	
-	System.out.println(firstParagraph + "   " + firstParagraph.returnAsString());
-
-	System.out.println("*****************");
-	firstParagraph.getListOfElements().stream().forEach((el)->System.out.println(el + "   " + el.returnAsString()));
-	System.out.println("*****************");
-	for (CompositeTextParts c : firstParagraph.getListOfElements()) {
-	    System.out.println(c + "   " + c.returnAsString());
-	}
-	System.out.println("*****************");
-	for (CompositeTextParts listOfSentences : firstParagraph.getListOfElements()) {
-	    for (CompositeTextParts c : listOfSentences.getListOfElements()) {
-		System.out.println(c + "   " + c.returnAsString());
-	    }
-	}
-	System.out.println("*****************");
-
-	
+	text.getAllParagraphs();
+	text.getAllSentences();
+	text.getAllWordsAndPuntcars();
 
 	/*
-	 * Text newText = new Text("src/main/resources/1.txt"); //
-	 * System.out.println(newText.getTestText()); TextParser newTextParser = new
-	 * TextParser();
-	 * 
-	 * for (Sentence word : newTextParser.parseText(newText.getTestText())) {
-	 * 
-	 * System.out.println(word);
+	 * This part of code create composite text and return each possible elements
+	 * list
 	 * 
 	 * 
-	 * if (word instanceof Word) { System.out.print(" "); }
-	 * if(".".equals(word.returnAsString()) || "!".equals(word.returnAsString()) ||
-	 * "?".equals(word.returnAsString()) ) {
-	 * System.out.println(word.returnAsString()); } else {
-	 * System.out.print(word.returnAsString()); }
+	 * CompositeTextParts text = new Text();
 	 * 
-	 * }
+	 * CompositeTextParts firstParagraph = new Paragraph(); CompositeTextParts
+	 * secondParagraph = new Paragraph();
 	 * 
-	 * // System.out.println(newTextParser.parseBySentences(newText.getTestText()));
+	 * CompositeTextParts firstSentence = new Sentence(); CompositeTextParts
+	 * secondSentence = new Sentence();
 	 * 
-	 * }
+	 * firstSentence.addElementToList(new Word("This"));
+	 * firstSentence.addElementToList(new PunctuationMark("-"));
+	 * firstSentence.addElementToList(new Word("is"));
+	 * firstSentence.addElementToList(new PunctuationMark("-"));
+	 * firstSentence.addElementToList(new Word("first"));
+	 * firstSentence.addElementToList(new PunctuationMark("-"));
+	 * firstSentence.addElementToList(new Word("sentence"));
+	 * firstSentence.addElementToList(new PunctuationMark("."));
+	 * 
+	 * secondSentence.addElementToList(new Word("Second"));
+	 * secondSentence.addElementToList(new PunctuationMark("-"));
+	 * secondSentence.addElementToList(new Word("sentence"));
+	 * secondSentence.addElementToList(new PunctuationMark("-"));
+	 * secondSentence.addElementToList(new Word("is"));
+	 * secondSentence.addElementToList(new PunctuationMark("-"));
+	 * secondSentence.addElementToList(new Word("this"));
+	 * secondSentence.addElementToList(new PunctuationMark("."));
+	 * 
+	 * firstParagraph.addElementToList(firstSentence);
+	 * firstParagraph.addElementToList(secondSentence);
+	 * 
+	 * secondParagraph.addElementToList(secondSentence);
+	 * secondParagraph.addElementToList(firstSentence);
+	 * 
+	 * text.addElementToList(firstParagraph);
+	 * text.addElementToList(secondParagraph);
+	 * 
+	 * System.out.println("********TEXT*********"); System.out.println(text + "   "
+	 * + text.returnAsString()); System.out.println("*****************");
+	 * 
+	 * System.out.println("********PARAGRAPH*********");
+	 * text.getListOfElements().stream().forEach((el) -> System.out.println(el +
+	 * "   " + el.returnAsString())); System.out.println("*****************");
+	 * 
+	 * System.out.println("*******SENTENCES**********");
+	 * text.getListOfElements().stream().forEach((el) ->
+	 * el.getListOfElements().stream() .forEach((elm) -> System.out.println(elm +
+	 * "   " + elm.returnAsString())));
+	 * 
+	 * System.out.println("*****************");
+	 * 
+	 * System.out.println("*******WORD'S*AND*PUNCTUATION*MARK'S*******");
+	 * text.getListOfElements().stream().forEach((el) ->
+	 * el.getListOfElements().stream().forEach((elm) -> elm
+	 * .getListOfElements().stream().forEach((elem) -> System.out.println(elem +
+	 * "   " + elem.returnAsString())
+	 * 
+	 * )));
+	 * 
+	 * System.out.println("*****************");
+	 * 
 	 */
+
     }
 }
