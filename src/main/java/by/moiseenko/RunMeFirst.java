@@ -1,16 +1,25 @@
 package by.moiseenko;
 
 import by.moiseenko.text_entity.Text;
+import by.moiseenko.text_services.TextManipulator;
+import by.moiseenko.text_services.TextRestorer;
+
 
 public class RunMeFirst {
 
     public static void main(String[] args) {
 
 	Text text = new Text("src/main/resources/1984.txt");
+	TextManipulator textMAnipulator = new TextManipulator();
 	
-	text.getAllParagraphs();
-	text.getAllSentences();
-	text.getAllWordsAndPuntcars();
+	System.out.println(textMAnipulator.getAllParagraphs(text).stream().count() + " - Paragraphs");
+	System.out.println(textMAnipulator.getAllSentences(text).stream().count() + " - Sentences");
+	
+	System.out.println(textMAnipulator.getAllWordsAndPunctchars(text).stream().count() + " - Words & Punctchars");
+	
+	System.out.println(textMAnipulator.getAllWords(text).stream().count() + " - Words");
+	
+	textMAnipulator.sortByAlphabet(text).stream().forEach(el -> System.out.println(el.returnAsString()));
 
 	/*
 	 * This part of code create composite text and return each possible elements
