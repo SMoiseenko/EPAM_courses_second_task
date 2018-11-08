@@ -10,7 +10,7 @@ import by.moiseenko.text_services.TextParser;
 
 public class Text implements CompositeTextParts {
 
-    private final static Logger logger = Logger.getLogger(Text.class);
+   // private final static Logger logger = Logger.getLogger(Text.class);
 
     private ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();
 
@@ -30,24 +30,7 @@ public class Text implements CompositeTextParts {
 	    System.out.println("File not found!!!");
 	}
     }
-
-    public void getAllParagraphs() {
-	listOfParagraphs.stream().forEach(el -> System.out.printf("%-24s%s%n", el, el.returnAsString()));
-    }
-
-    public void getAllSentences() {
-	listOfParagraphs.stream().forEach(el -> (el).getListOfElements().stream()
-		.forEach(elm -> System.out.printf("%-24s%s%n", elm, elm.returnAsString())));
-    }
-
-    public void getAllWordsAndPuntcars() {
-	listOfParagraphs.stream().forEach(el -> (el).getListOfElements().stream()
-		.forEach(elm -> (elm).getListOfElements().stream().forEach(elem -> {
-		    System.out.printf("%-24s%s%n", elem, elem.returnAsString());
-		    logger.info(elem+ "   "+ elem.returnAsString());
-		})));
-    }
-
+  
     @Override
     public void addElementToList(CompositeTextParts paragraph) {
 	listOfParagraphs.add(paragraph);
