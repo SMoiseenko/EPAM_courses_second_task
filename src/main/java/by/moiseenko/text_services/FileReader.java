@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 /**
- * Method-class that recieve path to file and return it as String (maybe make inner?s)
+ * Utility class that receive path to file and return it as String (maybe make inner?s)
  * @author Sergei Moiseenko
  *
  */
