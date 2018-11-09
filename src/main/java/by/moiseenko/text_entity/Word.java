@@ -1,8 +1,9 @@
 package by.moiseenko.text_entity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Word implements CompositeTextParts, Comparable<Word> {
+public final class Word implements CompositeTextParts, Comparable<Word> {
     private String word;
 
     public Word(String word) {
@@ -16,14 +17,12 @@ public class Word implements CompositeTextParts, Comparable<Word> {
 
     @Override
     public ArrayList<CompositeTextParts> getListOfElements() {
-	// TODO Auto-generated method stub
 	return null;
     }
 
     @Override
-    public void addElementToList(CompositeTextParts element) {
-	// TODO Auto-generated method stub
-
+    public void addElementToList(CompositeTextParts word) {
+	this.word = word.returnAsString();
     }
 
     @Override
@@ -33,10 +32,7 @@ public class Word implements CompositeTextParts, Comparable<Word> {
 
     @Override
     public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((word == null) ? 0 : word.hashCode());
-	return result;
+	return Objects.hash(word);
     }
 
     @Override

@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import by.moiseenko.text_services.FileReader;
+import by.moiseenko.text_services.FileReaderWriter;
 import by.moiseenko.text_services.TextParser;
 
 public class Text implements CompositeTextParts {
 
-   // private final static Logger logger = Logger.getLogger(Text.class);
+    // private final static Logger logger = Logger.getLogger(Text.class);
 
     private ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();
 
@@ -22,15 +22,10 @@ public class Text implements CompositeTextParts {
      */
 
     public Text(String fileName) {
-	try {
-	    String tempText = new FileReader().readFromFile(fileName);
-	    this.listOfParagraphs = TextParser.parseText(tempText);
-
-	} catch (FileNotFoundException e) {
-	    System.out.println("File not found!!!");
-	}
+	String tempText = FileReaderWriter.readFromFile(fileName);
+	this.listOfParagraphs = TextParser.parseText(tempText);
     }
-  
+
     @Override
     public void addElementToList(CompositeTextParts paragraph) {
 	listOfParagraphs.add(paragraph);
@@ -52,7 +47,6 @@ public class Text implements CompositeTextParts {
 
     @Override
     public String toString() {
-
 	return (String.valueOf(this.getClass())).substring(31) + ".class";
     }
 

@@ -1,7 +1,6 @@
 package by.moiseenko.text_services;
 
 import java.util.ArrayList;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import by.moiseenko.text_entity.CompositeTextParts;
 import by.moiseenko.text_entity.Text;
@@ -22,7 +21,6 @@ public class TextManipulator {
     public ArrayList<CompositeTextParts> getAllWordsAndPunctchars(Text text) {
 	ArrayList<CompositeTextParts> allWordsAndPunctchars = new ArrayList<>();
 	getAllSentences(text).stream().forEach(sen -> allWordsAndPunctchars.addAll(sen.getListOfElements()));
-	;
 	return allWordsAndPunctchars;
     }
 
@@ -31,9 +29,26 @@ public class TextManipulator {
 		.collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<CompositeTextParts> sortByAlphabet(Text text) {
+    public String sortByAlphabet(Text text) {
 
-	return getAllWords(text).stream().peek((el) -> new Word(el.returnAsString().toLowerCase())).distinct().sorted().collect(Collectors.toCollection(ArrayList::new));
+	StringBuilder resultString = new StringBuilder();
+	char newLetter = '0';
+
+	ArrayList<String> arrayOfWords = getAllWords(text).stream().map(el -> el.returnAsString().toLowerCase())
+		.distinct().sorted().collect(Collectors.toCollection(ArrayList::new));
+
+	for (String word : arrayOfWords) {
+	    if (word.charAt(0) == newLetter) {
+		resultString.append(", " + word);
+	    } else {
+		newLetter = word.charAt(0);
+		char[] s = word.toCharArray();
+		s[0] = Character.toUpperCase(s[0]);
+		resultString.append(";\n" + String.valueOf(s));
+	    }
+	}
+	resultString.delete(0, 2);
+	resultString.append(";");
+	return String.valueOf(resultString);
     }
-
 }
