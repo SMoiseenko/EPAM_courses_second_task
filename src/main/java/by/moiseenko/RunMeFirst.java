@@ -13,8 +13,12 @@ public class RunMeFirst {
 	
 	TextManipulator textManipulator = new TextManipulator();
 	
-	//System.out.print(textMAnipulator.sortByAlphabet(text));
+	//System.out.print(textManipulator.sortByAlphabet(text));
 	
-	FileReaderWriter.writeToFile("log/result.txt", textManipulator.sortByAlphabet(text));
+	//FileReaderWriter.writeToFile("log/result.txt", textManipulator.sortByAlphabet(text));
+	
+	System.out.println(TextRestorer.textRestorer(text));
+	
+	
     }
 }
