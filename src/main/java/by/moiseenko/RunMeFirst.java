@@ -9,7 +9,7 @@ public class RunMeFirst {
 
     public static void main(String[] args) {
 
-	Text text = new Text("src/main/resources/2.txt");
+	Text text = new Text("src/test/resources/1984.txt");
 	
 	TextManipulator textManipulator = new TextManipulator();
 	
