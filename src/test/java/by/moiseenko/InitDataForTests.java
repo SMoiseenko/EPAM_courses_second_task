@@ -10,6 +10,9 @@ import by.moiseenko.text_entity.Word;
 
 /**
  * The Class to initializing all data for tests.
+ * @see TestTextParser
+ * @see TestTextRestorer
+ * @see TestTextManipulator
  */
 public class InitDataForTests {
     
