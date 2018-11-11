@@ -2,6 +2,7 @@ package by.moiseenko;
 
 import by.moiseenko.text_entity.Text;
 import by.moiseenko.text_services.TextManipulator;
+
 /**
  * Class made for visualization (console output) result of the task.
  * @author Sergei Moiseenko
@@ -11,8 +12,8 @@ import by.moiseenko.text_services.TextManipulator;
 public class RunMeFirst {
 
     public static void main(String[] args) {
-
-	Text text = new Text("src/test/resources/1984.txt");
-	System.out.print(new TextManipulator().sortByAlphabet(text));
+	Text text = new Text("src/main/resources/1984.txt");
+	System.out.println(TextManipulator.sortByAlphabet(text));
+	
     }
 }
