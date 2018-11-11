@@ -14,7 +14,7 @@ import by.moiseenko.text_services.TextManipulator;
  * @author Sergei Moiseenko
  * @see TextManipulator
  */
-public class TextManipulatorTest {
+public class TestTextManipulator {
     private Text testedText; 
     private String expectedSortByAlphabetString;
     private ArrayList<CompositeTextParts> expectedWordsList;

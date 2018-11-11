@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package by.moiseenko.text_services;
 
 import java.util.ArrayList;
@@ -6,30 +9,37 @@ import by.moiseenko.text_entity.CompositeTextParts;
 import by.moiseenko.text_entity.Text;
 import by.moiseenko.text_entity.Word;
 
+/**
+ * The Class TextManipulator.
+ */
 public class TextManipulator {
 
-    public ArrayList<CompositeTextParts> getAllParagraphs(Text text) {
+    private TextManipulator() {
+
+    }
+
+    public static ArrayList<CompositeTextParts> getAllParagraphs(Text text) {
 	return text.getListOfElements();
     }
 
-    public ArrayList<CompositeTextParts> getAllSentences(Text text) {
+    public static ArrayList<CompositeTextParts> getAllSentences(Text text) {
 	ArrayList<CompositeTextParts> allSentenses = new ArrayList<>();
 	getAllParagraphs(text).stream().forEach(par -> allSentenses.addAll(par.getListOfElements()));
 	return allSentenses;
     }
-
-    public ArrayList<CompositeTextParts> getAllWordsAndPunctchars(Text text) {
+//tested
+    public static ArrayList<CompositeTextParts> getAllWordsAndPunctchars(Text text) {
 	ArrayList<CompositeTextParts> allWordsAndPunctchars = new ArrayList<>();
 	getAllSentences(text).stream().forEach(sen -> allWordsAndPunctchars.addAll(sen.getListOfElements()));
 	return allWordsAndPunctchars;
     }
-
-    public ArrayList<CompositeTextParts> getAllWords(Text text) {
+//tested
+    public static ArrayList<CompositeTextParts> getAllWords(Text text) {
 	return getAllWordsAndPunctchars(text).stream().filter(el -> el instanceof Word)
 		.collect(Collectors.toCollection(ArrayList::new));
     }
-
-    public String sortByAlphabet(Text text) {
+//tested
+    public static String sortByAlphabet(Text text) {
 
 	StringBuilder resultString = new StringBuilder();
 	char newLetter = '0';

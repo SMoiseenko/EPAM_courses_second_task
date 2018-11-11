@@ -1,6 +1,5 @@
 package by.moiseenko.text_entity;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
@@ -23,7 +22,7 @@ public class Text implements CompositeTextParts {
 
     public Text(String fileName) {
 	String tempText = FileReaderWriter.readFromFile(fileName);
-	this.listOfParagraphs = TextParser.parseText(tempText);
+	this.listOfParagraphs = TextParser.textParser(tempText);
     }
 
     @Override
