@@ -14,24 +14,24 @@ import java.util.Scanner;
  *
  */
 public class FileReaderWriter {
+    
+    private FileReaderWriter() {
+	
+    }
 
     public static String readFromFile(String fileName) {
 	StringBuilder str = new StringBuilder();
-
 	try (Scanner in = new Scanner(new File(fileName), "UTF-8")) {
-
 	    while (in.hasNext()) {
-		str.append(in.nextLine() + "\n");
+		str.append("\n" + in.nextLine());
 	    }
-	    in.close();
-
 	} catch (FileNotFoundException e) {
 	    System.out.println("File not found!!!");
 	}
+	str.deleteCharAt(0);
 	return str.toString();
     }
 
-    
     public static void writeToFile(String path, String text) {
 	try (FileWriter writer = new FileWriter(path)) {
 	    writer.write(text);
