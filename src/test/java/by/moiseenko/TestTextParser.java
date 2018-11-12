@@ -2,7 +2,6 @@ package by.moiseenko;
 
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,11 +11,9 @@ import by.moiseenko.text_services.TextParser;
 
 /**
  * The Class to testing <i>textParser</i> method of {@link TextParser} class.
- * 
  * @author Sergei Moiseenko
  **/
 public class TestTextParser {
-    private final static Logger logger = Logger.getLogger(TestTextParser.class);
     private String textParserString;
     private ArrayList<CompositeTextParts> exepcedParserResult;
 
