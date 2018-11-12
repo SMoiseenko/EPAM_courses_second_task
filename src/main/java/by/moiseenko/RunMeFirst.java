@@ -4,7 +4,7 @@ import by.moiseenko.text_entity.Text;
 import by.moiseenko.text_services.TextManipulator;
 
 /**
- * Class made for visualization (console output) result of the task.
+ * This Class made for visualization (console output) result of the task.
  * @author Sergei Moiseenko
  * @see Text
  * @see TextManipulator
