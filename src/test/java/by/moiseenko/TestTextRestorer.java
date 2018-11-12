@@ -6,7 +6,10 @@ import org.testng.annotations.Test;
 
 import by.moiseenko.text_entity.Text;
 import by.moiseenko.text_services.TextRestorer;
-
+/**
+ * The Class to testing <i>testRestorer</i> method of {@link TextRestorer}
+ * @author moiseenko-s
+ */
 public class TestTextRestorer {
     private Text testedText;
     private String exepedTextRestoredString;
