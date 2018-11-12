@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * The Class Sentence.
+ * The Class Sentence implement {@link CompositeTextParts} to realize composite pattern.
+ * Have one field of collection type of list to storage all {@link PunctuationMark} and {@link Word}.
+ * @author moiseenko-s
+ * @see Paragraph
+ * @see Text
+ * @see Word
+ * @see PunctuationMark
  */
 public class Sentence implements CompositeTextParts {
     private ArrayList<CompositeTextParts> listPartsOfSentence = new ArrayList<>();

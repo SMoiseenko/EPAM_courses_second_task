@@ -2,23 +2,22 @@ package by.moiseenko.text_entity;
 
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
-
 import by.moiseenko.text_services.FileReaderWriter;
 import by.moiseenko.text_services.TextParser;
 
+/**
+ * The basic entity class Text implement {@link CompositeTextParts} to realize
+ * composite pattern. Have one field of collection type of list to storage all
+ * {@link Paragraph}.
+ * 
+ * @author moiseenko-s
+ * @see Paragraph
+ * @see Sentence
+ * @see Word
+ * @see PunctuationMark
+ */
 public class Text implements CompositeTextParts {
-
-    // private final static Logger logger = Logger.getLogger(Text.class);
-
     private ArrayList<CompositeTextParts> listOfParagraphs = new ArrayList<>();
-
-    /**
-     * Default constructor that create new instance of the text, parse it, and
-     * filled listOfParagraphs
-     * 
-     * @param fileName
-     */
 
     public Text(String fileName) {
 	String tempText = FileReaderWriter.readFromFile(fileName);

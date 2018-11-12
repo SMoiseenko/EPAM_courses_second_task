@@ -2,7 +2,15 @@ package by.moiseenko.text_entity;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
+/**
+ * The Class Word implement {@link CompositeTextParts} to realize composite pattern.
+ * Have one field of String type to storage one word.
+ * @author moiseenko-s
+ * @see Text
+ * @see Sentence
+ * @see PunctuationMark
+ * @see Paragraph
+ */
 public class Word implements CompositeTextParts, Comparable<Word> {
     private String word;
 

@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * The Class PunctuationMark.
+ * The Class Paragraph implement {@link CompositeTextParts} to realize composite pattern.
+ * Have one field of String type to storage punctuation symbol.
+ * @author moiseenko-s
+ * @see Text
+ * @see Sentence
+ * @see Word
+ * @see Paragraph
  */
 public class PunctuationMark implements CompositeTextParts {
     private String punctchar;
