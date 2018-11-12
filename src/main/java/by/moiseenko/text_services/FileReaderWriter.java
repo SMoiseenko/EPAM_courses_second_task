@@ -9,9 +9,9 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 /**
- * Utility class that:
- * <br>read from <b>txt</b> file to String with <i>String readFromFile(String fileName)</i> method;
- * <br> write to <b>txt</b> file from String with <i>void writeToFile(String path, String text)</i> method;
+ * The Class that:
+ * <br>read from <b>txt</b> file to String by <i>String readFromFile(String fileName)</i> method;
+ * <br> write to <b>txt</b> file from String by <i>void writeToFile(String path, String text)</i> method;
  * @author Sergei Moiseenko
  */
 public class FileReaderWriter {
