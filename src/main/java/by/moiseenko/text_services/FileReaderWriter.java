@@ -28,11 +28,11 @@ public class FileReaderWriter {
 		str.append("\n" + in.nextLine());
 	    }
 	} catch (FileNotFoundException e) {
-	    logger.error("File" + fileName + " not found!!!");
+	    logger.error("File " + fileName + " not found!!!");
 	}
 	str.deleteCharAt(0);
 	if (logger.isInfoEnabled()) {
-	    logger.info("File" + fileName + "was read in String \n" + str.toString());
+	    logger.info("File " + fileName + " was read in String \n" + str.toString());
 	}
 	return str.toString();
     }
